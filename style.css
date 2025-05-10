@@ -1,6 +1,6 @@
 body {
   font-family: "Orbitron", sans-serif;
-  background: #e9edc9;
+  background: #dadfba;
 }
 
 .upper {
@@ -9,12 +9,21 @@ body {
 
 .navbar {
   background: #ccd5ae;
-  /* border-bottom: 2px solid black ; */
+}
+.navbar-nav {
+  padding: 30px !important;
 }
 
 .nav-link {
-  padding: 30px !important;
+  padding: 10px 20px 10px 20px !important;
+  margin: 10px !important;
   color: black !important;
+  background: white;
+  border-radius: 30px;
+}
+
+.nav-link:hover {
+  background: rgb(231, 207, 161);
 }
 
 .animated-border {
@@ -61,12 +70,6 @@ body {
   margin-left: 5%;
 }
 
-/* .photo{
-  position: relative;
-  background-color: aqua;
-  height: 420px;
-  width: 420px;
-} */
 .photo-wrapper {
   position: absolute;
   top: 125px;
@@ -85,7 +88,8 @@ body {
 }
 
 @keyframes blobMotion {
-  0%, 100% {
+  0%,
+  100% {
     border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
     transform: translate(0, 0);
   }
@@ -99,19 +103,17 @@ body {
   position: relative;
   width: 400px;
   height: 450px;
-  backdrop-filter: blur(10px);
-  /* background: rgba(255, 255, 255, 0.08); */
+
   border-radius: 25px;
-  /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25); */
+
   overflow: hidden;
   z-index: 1;
-  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .photo:hover {
   transform: translateX(-25px);
-  /* box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35); */
 }
 
 .glow-ring {
@@ -127,15 +129,6 @@ body {
   pointer-events: none;
 }
 
-@keyframes rotateRing {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .img {
   height: 400px;
   position: absolute;
@@ -149,13 +142,44 @@ body {
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
 }
 
+body {
+  height: 80vh;
+}
 
-/* .photo .img{
-  height: 400px;
+.slider-thumb::before {
   position: absolute;
-  top: 175px;
-  right: 100px;
-} */
+  content: "";
+  left: 10%;
+  top: 12%;
+  width: 355px;
+  height: 500px;
+  background: #17141d;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: sliderShape 5s linear infinite;
+  display: block;
+  z-index: -1;
+  -webkit-animation: sliderShape 5s linear infinite;
+}
+@keyframes sliderShape {
+  0%,
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  34% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+    overflow: visible;
+  }
+}
 
 .btns {
   gap: 1rem;
@@ -195,8 +219,8 @@ body {
   margin: 30px auto;
   padding: 30px;
   max-width: 800px;
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(226, 247, 194, 0.993);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   font-style: italic;
   transition: all 0.3s ease;
 }
@@ -309,37 +333,44 @@ body {
 @media (max-width: 768px) {
   .navbar-collapse {
     text-align: center;
-    /* background-color: black !important; 
-    color: white; */
   }
 
-  /* .upper{
-    background: black !important;
+  .photo-wrapper {
+    display: none;
   }
 
-   .navbar, .intro {
-    background-color: black !important;
-    color: white !important;
+  .blob-bg {
+    display: none;
   }
-  .navbar-nav {
-    background-color: black !important;
-  } */
 
-  /* .navbar a,
-  .navbar-brand,
-  .nav-link,
-  .intro h1,
-  .intro h2,
-  .intro h4,
-  .btns button {
-    color: white !important;
-    border-color: white !important;
-  } */
+  .photo {
+    display: none;
+  }
+
+  .photo:hover {
+    display: none;
+  }
+
+  .glow-ring {
+    display: none;
+  }
+
+  body {
+    height: 50vh;
+  }
+
+  .slider-thumb::before {
+    display: none;
+  }
 
   .btns button {
     background-color: transparent;
   }
 
+  .intro {
+    height: 52vh;
+    background: #ccd5ae;
+  }
   .custom-margin {
     margin-right: 0 !important;
   }
@@ -382,12 +413,7 @@ body {
 @media (min-width: 769px) and (max-width: 1024px) {
   .navbar-collapse {
     text-align: center;
-    /* background-color: black;
-    color: white; */
   }
-  /* .upper{
-    background: black !important;
-  } */
 
   .custom-margin {
     margin-right: 0 !important;
